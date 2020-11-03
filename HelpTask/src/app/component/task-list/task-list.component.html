@@ -88,11 +88,11 @@
               <td> {{ item.tempoGasto }}</td>
 
               <td >
-                <button (click)="edit(item.id)"  *ngIf="item.status != 'Closed' || (item.status == 'Closed' && (item.tempoGasto == '0 dias ' || item.tempoGasto == ''  || item.tempoGasto == 'uninformed' || item.tempoGasto == 'undefined' || item.tempoGasto == null  ))"
+                <button (click)="edit(item.id)"  *ngIf="item.status != 'Closed' || (item.status == 'Closed' && (item.tempoGasto == '0 dias' || item.tempoGasto == ''  || item.tempoGasto == 'uninformed' || item.tempoGasto == 'undefined' || item.tempoGasto == null  ))"
                 class="btn btn-primary">
                   editar</button> </td>
 
-              <td *ngIf="shared.usuario.profile == 'CUSTOMER' ">
+              <td *ngIf="shared.usuario.profile == 'CUSTOMER' && item.status != 'Closed' ">
                 <button (click)="delete(item.id)" class="btn btn-danger">excluir</button></td>
 
               <td><button (click)="detail(item.id)" class="btn btn-success">detalhes</button></td>
