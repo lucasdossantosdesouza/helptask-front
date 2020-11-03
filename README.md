@@ -1,5 +1,6 @@
-#helptask front-end Para rodar o projeto front-End baixe a ide VS.
-Code ou outra de sua preferência e instale. instale o NodeJS versão 12.19.0 e o Angular Cli versão 10.1.7. 
+#helptask front-end 
+Para rodar o projeto front-End baixe a ide VS.Code e instale. 
+instale o NodeJS versão 12.19.0 e o Angular Cli versão 10.1.7. 
 Clone o projeto do git. Abra o projeto na ide na opção File -> open folder ou open workspace. 
 Para subir a aplicação va ao menu Terminal -> new terminal. 
 Com o terminal aberto digite ng serve --open=true. 
