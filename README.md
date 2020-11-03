@@ -17,3 +17,4 @@ Somente o Técnico pode reabrir a task.
 Somente o Técnico pode atribuir a task para ele.
 Os comentários só aparecem para tasks com situação(status) diferentes de fechada.
 
+
