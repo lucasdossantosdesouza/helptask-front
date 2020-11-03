@@ -1,0 +1,55 @@
+<h2 class="mt-5">Lista de Comentários da Task</h2>
+
+      <div class="table-responsive" >
+        <alert id="alert-1"></alert>        
+            <div  class="jumbotron p-4" *ngIf="shared.usuario.profile == 'TECHNICIAN' || shared.usuario.profile == 'CUSTOMER' "> 
+              <div class="form-group">      
+              <label for="exampleInputTexto">Texto</label>        
+              <textarea type="text" [(ngModel)]="comentario.texto" 
+              class="form-control" name="texto" rows="6"
+              id="exampleInputTexto"  placeholder="Seu Texto"  
+              #texto="ngModel" texto required> 
+              </textarea>
+                <div  class="alert alert-danger"  
+                style="width: 250px;" *ngIf=" texto.invalid && (texto.dirty || texto.touched)">   
+                  Texto é Obrigatório       
+                </div>        
+            </div>
+            <div>
+              <button type="submit" [disabled]="salvar" (click)="registrar()"  class="btn btn-primary">Enviar</button>    
+              <span class="espaco"></span>
+            <button type="submit" class="btn btn-info pull-right" (click)="clean()" >Limpar </button>
+          </div>
+
+          </div>
+        <table class="table table-striped" >
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Usuario</th>              
+              <th>Data</th>               
+              <th ></th>    
+              <th ></th>  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of comentarios" (click)="visualizar(item)">  
+              <td>{{ item.task.number }}</td>           
+              <td>{{ item.usuario.email }}</td>             
+              <td> {{ item.data | date:'dd/MM/yyyy HH:mm' }}</td>              
+
+              <td  *ngIf="item.usuario.id == shared.usuario.id">
+                <button (click)="edit(item)" class="btn btn-primary">editar</button> </td>
+
+              <td   *ngIf="item.usuario.id == shared.usuario.id">
+                <button (click)="delete(item.id)" class="btn btn-danger">excluir</button></td>
+
+            </tr>
+          </tbody>
+
+    </table>  
+    <span class="alert alert-danger">Clique no comentário para visualizar o texto</span>    
+    <pagination [page]="page" (paginationEvent)=changePage($event)></pagination>
+</div>
+<button type="button" class="btn btn-link" (click)="viewTaskDetail()">Voltar</button>
+

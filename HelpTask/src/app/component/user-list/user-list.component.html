@@ -1,0 +1,26 @@
+<h2 class="mt-5">Lista de Usuarios</h2>
+      <div class="table-responsive" >
+        <alert id="alert-1"></alert>
+        <table class="table table-striped" >
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Perfil</th>
+              <th></th>
+              <th></th>              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of usuarios" >             
+              <td>{{ item.email }}</td>
+              <td *ngIf="item.profile == 'ROLE_ADMIN' ">Administrador</td>
+              <td *ngIf="item.profile == 'ROLE_CUSTOMER' ">Cliente</td>
+              <td *ngIf="item.profile == 'ROLE_TECHNICIAN' ">Técnico</td>
+              <td ><button (click)="edit(item.id)" class="btn btn-primary">editar</button> </td>
+              <td><button (click)="delete(item.id)" class="btn btn-danger">excluir</button></td>
+            </tr>
+          </tbody>
+        </table>
+         
+        <pagination [page]="page" (paginationEvent)=changePage($event)></pagination>
+</div>

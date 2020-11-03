@@ -1,0 +1,84 @@
+<nav id="sidebar" class="wrapper">
+        
+
+    <ul class="list-unstyled components">
+        <div class="active" *ngIf="shared.usuario.profile == 'ADMIN' ">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <a href="#" class="dropdown-toggle" style="font-size: 14px;"
+                data-toggle="collapse" data-target="#collapseUser" 
+                aria-expanded="false" aria-controls="collapseUser">
+                <i class="fa fa-edit"></i>
+                Usuário
+                <!--<span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>-->
+                </a>
+              </h5>
+            </div>
+            <div id="collapseUser" style="font-size: 0.8em !important;padding-left: 125px !important;
+            background: #333333"
+             class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <a [routerLink]="['/lista-usuario']" routerLinkActive="router-link-active"  >  Lista    </a>
+                  
+              </div>
+              <div class="card-body">
+                <a [routerLink]="['/novo-usuario']" routerLinkActive="router-link-active" >  Novo   </a>
+                  
+              </div>
+            </div>
+          </div>
+       
+          <div class="active" *ngIf="shared.usuario.profile != 'ADMIN' ">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <a href="#" class="dropdown-toggle" style="font-size: 14px;"
+                data-toggle="collapse" data-target="#collapseTicket" 
+                aria-expanded="false" aria-controls="collapseTicket">
+                <i class="fa fa-edit"></i>
+                Tasks
+                <!--<span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>-->
+                </a>
+              </h5>
+            </div>
+            <div id="collapseTicket" style="font-size: 0.8em !important;padding-left: 125px !important;
+            background: #333333"
+            
+            class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body" >
+                <a [routerLink]="['/lista-task']" routerLinkActive="router-link-active" >  Lista   </a>
+                  
+              </div>
+              <div class="card-body" *ngIf="shared.usuario.profile == 'CUSTOMER' ">
+                <a [routerLink]="['/novo-task']" routerLinkActive="router-link-active" >  Novo   </a>
+                  
+              </div>
+            </div>
+          </div>
+
+        <div class="active">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <a href="#" class="dropdown-toggle"  style="font-size: 14px;"
+                data-toggle="collapse" data-target="#collapseSummary" 
+                aria-expanded="false" aria-controls="collapseSummary">
+                <i class="fa fa-edit"></i>
+                Resumo                
+                </a>
+              </h5>
+            </div>
+            <div id="collapseSummary" 
+            style="font-size: 0.8em !important;padding-left: 77px !important;
+            background: #333333"            
+            class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <a [routerLink]="['/summary']" routerLinkActive="router-link-active" >Visualização</a>
+                  
+              </div>
+            </div>
+          </div>
+    </ul>
+</nav>

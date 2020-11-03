@@ -1,0 +1,102 @@
+
+<h2 class="mt-5">Detalhe da Task</h2>
+<div class="table-responsive" >
+
+    <alert id="alert-1"></alert>
+    <div  class="jumbotron p-4" >        
+
+        <div class="form-group">     
+          <b>Número:&nbsp;&nbsp;</b> <span>{{ task.number }}</span>
+          <span class="col-sm-2 col-form-label"><b>Título:&nbsp;&nbsp;</b> <span>{{ task.titulo }}</span></span>          
+  
+        </div>
+
+        <div class="form-group">     
+            <b>Prioridade:&nbsp;&nbsp;</b> <span>{{ getPriority() }}</span>
+            <span class="col-sm-2 col-form-label"><b>Criado por:&nbsp;&nbsp;</b> <span>{{ task?.usuario?.email }}</span></span>          
+    
+          </div>
+
+          <div class="form-group">     
+            <b>Status:&nbsp;&nbsp;</b> <span>{{ getStatus() }}</span>
+            <span class="col-sm-2 col-form-label"><b>Atribuído para:&nbsp;&nbsp;</b> <span>{{ task?.assigneredUser?.email }}</span></span>          
+    
+          </div>
+    
+          <div class="form-group">     
+            <b>Data:&nbsp;&nbsp;</b> <span>{{ task.data | date:'dd/MM/yyyy' }}</span>
+            <span class="col-sm-2 col-form-label"><b>Descrição:&nbsp;&nbsp;</b> <span>{{ task.description}}</span></span>          
+    
+          </div>
+          <div class="form-group">     
+            <b>Data Agendamento:&nbsp;&nbsp;</b> <span>{{ task.dataAgendamento | date:'dd/MM/yyyy HH:mm' }}</span>    
+            <span class="col-sm-2 col-form-label"><b>Tempo Gasto:&nbsp;&nbsp;</b> <span>{{ task.tempoGasto}}</span></span>          
+
+          </div>
+
+                     
+            <div class="row">  
+              <div class="col-sm"> <img [src]="task.image" width="80%" height="80%">  </div>
+            
+            <div class="col-sm" >
+                <table class="table table-striped"  title="Alteração de Status">
+                    <thead>
+                      <tr>
+                        <th>Usuário Alt.</th>
+                        <th style="width: 350px;">D. Alteração</th>
+                        <th>Status</th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of task.changeStatus" >  
+                        <td>{{ item?.usuario.email }}</td>           
+                        <td style="width: 350px;">{{ item?.data | date:'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{ getStatusChange(item) }}</td>                        
+                      </tr>
+                    </tbody>
+          
+              </table> 
+              </div>
+            </div>
+
+          <div>
+            <button type="submit" *ngIf="shared.usuario.profile == 'TECHNICIAN' && task.status == 'New' "
+            (click)="changeStatus('Assigned')"  class="btn btn-primary">
+              Atribuir para mim
+            </button>  
+
+            <span class="espaco"></span>
+
+            <button type="submit" *ngIf="shared.usuario.profile == 'TECHNICIAN' && (task.status == 'Assigned' || task.status == 'Disaproved' ) "
+            (click)="changeStatus('Resolved')"  class="btn btn-info">
+              Resolvida
+            </button> 
+
+            <span class="espaco"></span>
+
+            <button type="submit" *ngIf="shared.usuario.profile == 'CUSTOMER' && task.status == 'Resolved' "
+            (click)="changeStatus('Aproved')"  class="btn btn-success">
+              Aprovar
+            </button>
+
+            <span class="espaco"></span>
+
+            <button type="submit" *ngIf="shared.usuario.profile == 'CUSTOMER' && task.status == 'Resolved' "
+            (click)="changeStatus('Disaproved')"  class="btn btn-warning">
+              Desaprovar
+            </button>
+
+            <span class="espaco"></span>
+
+            <button type="submit" *ngIf="shared.usuario.profile == 'TECHNICIAN' && task.status == 'Aproved' "
+            (click)="changeStatus('Closed')"  class="btn btn-danger">
+              Fechar
+            </button>
+            <button type="button" class="btn btn-link" (click)="viewTaskComentarios()">Comentário(s)</button>
+        </div>
+        <br>
+        <br>
+        <button type="button" class="btn btn-link" (click)="viewTaskList()">Voltar</button>
+      </div>
+
+</div>

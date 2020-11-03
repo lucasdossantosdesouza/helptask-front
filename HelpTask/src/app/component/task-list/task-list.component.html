@@ -1,0 +1,102 @@
+<h2 class="mt-5">Lista de Tasks</h2>
+
+      <div class="table-responsive" >
+
+        <alert id="alert-1"></alert>
+        
+        <div  class="jumbotron p-4" *ngIf="shared.usuario.profile == 'TECHNICIAN' "> 
+
+            <div class="form-group" style="padding-left: 25px;">
+
+              <input type="checkbox" class="form-check-input" id="assignedToMe"
+               [(ngModel)]="assignedToMe">
+              <label class="form-check-label" for="assignedToMe">Atribuído pra mim</label>
+
+            </div>
+
+            <div class="form-group">     
+      
+              <label for="numero">Número</label>
+        
+              <input type="text" [(ngModel)]="taskFilter.number" class="form-control" name="numero"
+              id="numero"  >   
+      
+            </div>
+
+            <div class="form-group">
+      
+            <label for="titulo">Título</label>
+      
+            <input type="text" [(ngModel)]="taskFilter.titulo" class="form-control" name="titulo"
+            id="titulo"  >   
+      
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+      
+              <select  [(ngModel)]="taskFilter.status"  name="status"
+              class="form-control select2" id="status" style="width: 100%;">
+                  <option value="New">Nova</option>
+                  <option value="Assigned">Atribuída</option>
+                  <option value="Resolved">Resolvida</option>
+                  <option value="Aproved">Aprovada</option>
+                  <option value="Disaproved">Desaprovada</option>
+                  <option value="Closed">Fechada</option>
+              </select>     
+          </div>
+        
+            <div class="form-group">
+                <label for="priority">Prioridade</label>
+        
+                <select  [(ngModel)]="taskFilter.priority"  name="priority"
+                class="form-control select2" id="priority" style="width: 100%;">
+                    <option value="High">Alta</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Low">Baixa</option>
+                </select>     
+            </div>
+            
+            <div>
+              <button type="submit" (click)="filter()"  class="btn btn-primary">Filtrar</button>    
+              <span class="espaco"></span>
+            <button type="submit" class="btn btn-info pull-right" (click)="cleanFilter()" >Limpar Filtro(s)</button>
+          </div>
+
+          </div>
+        <table class="table table-striped" >
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Título</th>
+              <th>Status</th>
+              <th>Prioridade</th>
+              <th>D.Agendamento</th> 
+              <th>Tempo Gasto</th>
+              <th *ngIf="shared.usuario.profile == 'CUSTOMER' "></th>   
+              <th *ngIf="shared.usuario.profile == 'CUSTOMER' "></th>   
+              <th></th>      
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tasks" >  
+              <td>{{ item.number }}</td>           
+              <td>{{ item.titulo }}</td>
+              <td > {{ getStatus(item) }}</td>             
+              <td> {{ getPriority(item) }}</td>
+              <td> {{ item.dataAgendamento | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td> {{ item.tempoGasto }}</td>
+
+              <td >
+                <button (click)="edit(item.id)" class="btn btn-primary">editar</button> </td>
+
+              <td *ngIf="shared.usuario.profile == 'CUSTOMER' ">
+                <button (click)="delete(item.id)" class="btn btn-danger">excluir</button></td>
+
+              <td><button (click)="detail(item.id)" class="btn btn-success">detalhes</button></td>
+            </tr>
+          </tbody>
+
+    </table>      
+    <pagination [page]="page" (paginationEvent)=changePage($event)></pagination>
+</div>

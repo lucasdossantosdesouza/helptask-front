@@ -1,0 +1,24 @@
+ <div id="content">
+       
+        <nav class="navbar navbar-light fixed-top" style="background-color: #367fa9; max-height:45px;font-size: 14px;">
+                     <div>
+                <h3 style="color: #fff;font-size: 16px;"> {{title}}
+             
+                <button type="button" id="sidebarCollapse" class="btn navbar-toggler-icon "
+                 style="background-color: #fff;max-height:18px;">
+                      
+                 </button>  
+                </h3>
+                </div> 
+                
+           <div> <p style="color: #fff;">
+            {{shared.usuario.email}} - {{getProfile()}} |
+            <button type="button" class="btn btn-link" (click)="signOut()" style="color: #fff;max-height:50px;padding: unset;">
+               Logout</button>
+           </p></div>
+           
+             
+    
+          </nav>         
+    </div>
+
