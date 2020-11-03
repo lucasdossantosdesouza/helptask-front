@@ -51,9 +51,9 @@ export class ComentarioComponent implements OnInit {
           this.alertService.success('Comentário salvo com sucesso ',
           { id: 'alert-1' });
           setTimeout(() => {
-            this.alertService.clear('alert-1');            
-            this.clean();
-            this.route.navigate(['/comentario-task',this.idTask]);
+            this.alertService.clear('alert-1');  
+            this.clean();          
+            this.route.navigate(['/comentario-task',this.comentario.task.id]);
           }, 4000);
            
     });
