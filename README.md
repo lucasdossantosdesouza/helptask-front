@@ -1,7 +1,8 @@
-#helptask front-end  
+#helptask front-end (Angular)
 Para rodar o projeto front-End baixe a ide VS.Code e instale. 
 instale o NodeJS versão 12.19.0 e o Angular Cli versão 10.1.7. 
-Clone o projeto do git. Abra o projeto na ide na opção File -> Open Folder, vá a pasta que você clonou o projeto abra a pasta do projeto e clique em abrir. 
+Clone o projeto do git ou baixe via .rar. 
+Abra o projeto na ide na opção File -> Open Folder, vá a pasta que você clonou o projeto e abra a pasta do projeto e clique em abrir. 
 Para subir a aplicação va ao menu Terminal -> new terminal. 
 Com o terminal aberto digite npm install  @angular/cli para instalar as dependências no projeto e depois ng serve --open=true para subir a aplicação front-end. 
 O login default é admin@admin.com com password 123456. 
