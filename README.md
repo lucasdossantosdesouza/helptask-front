@@ -5,6 +5,7 @@ Clone o projeto do git ou baixe via .rar.
 Abra o projeto na ide na opção File -> Open Folder, vá a pasta que você clonou o projeto e abra a pasta do projeto e clique em abrir. 
 Para subir a aplicação va ao menu Terminal -> new terminal. 
 Com o terminal aberto digite npm install  @angular/cli para instalar as dependências no projeto e depois ng serve --open=true para subir a aplicação front-end. 
+Qualquer mensagem que aparecer no terminal renponde: y.
 O login default é admin@admin.com com password 123456. 
 Existem três tipos de usuários no sistema o Administrador que só cadastra usuários e visualiza o resumo das tasks, 
 O Técnico vizualiza as tasks atríbui ela pra sí e atende.
