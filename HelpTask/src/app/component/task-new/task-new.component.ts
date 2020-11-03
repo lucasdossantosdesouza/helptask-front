@@ -43,13 +43,11 @@ export class TaskNewComponent implements OnInit {
   }
 
   registrar(){    
-    if(this.dias != null ){
-      this.task.tempoGasto = this.dias.toString() +' dias ';
-    }else{
-      this.task.tempoGasto ='0 dias '
+    if(this.dias != null && this.dias > 0){
+      this.task.tempoGasto = this.dias +' dias ';
     }
     if(this.horas != null){
-      this.task.tempoGasto = this.task.tempoGasto + ' e '+this.horas +' horas/minutos ';
+      this.task.tempoGasto = (this.task.tempoGasto != null ? this.task.tempoGasto : '') + ' e '+this.horas +' horas/minutos ';
     }
     this.tasktService.createOrUpdate(this.task).subscribe(
       (responseApi: ResponseApi)=>{          

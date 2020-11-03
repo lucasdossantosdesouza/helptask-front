@@ -2,10 +2,10 @@
 
       <div class="table-responsive" >
 
-        <alert id="alert-1"></alert>
+        
         
         <div  class="jumbotron p-4" *ngIf="shared.usuario.profile == 'TECHNICIAN' "> 
-
+          <alert id="alert-1"></alert>
             <div class="form-group" style="padding-left: 25px;">
 
               <input type="checkbox" class="form-check-input" id="assignedToMe"
@@ -88,7 +88,9 @@
               <td> {{ item.tempoGasto }}</td>
 
               <td >
-                <button (click)="edit(item.id)" class="btn btn-primary">editar</button> </td>
+                <button (click)="edit(item.id)"  *ngIf="item.status != 'Closed' || (item.status == 'Closed' && (item.tempoGasto == '0 dias ' || item.tempoGasto == ''  || item.tempoGasto == 'uninformed' || item.tempoGasto == 'undefined' || item.tempoGasto == null  ))"
+                class="btn btn-primary">
+                  editar</button> </td>
 
               <td *ngIf="shared.usuario.profile == 'CUSTOMER' ">
                 <button (click)="delete(item.id)" class="btn btn-danger">excluir</button></td>
@@ -98,5 +100,6 @@
           </tbody>
 
     </table>      
-    <pagination [page]="page" (paginationEvent)=changePage($event)></pagination>
+    
+    <pagination [page]="page" (paginationEvent)="changePage($event)"></pagination>
 </div>

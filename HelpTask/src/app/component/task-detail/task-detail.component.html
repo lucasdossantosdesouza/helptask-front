@@ -92,7 +92,13 @@
             (click)="changeStatus('Closed')"  class="btn btn-danger">
               Fechar
             </button>
-            <button type="button" class="btn btn-link" (click)="viewTaskComentarios()">Comentário(s)</button>
+            <button type="submit" *ngIf="shared.usuario.profile == 'TECHNICIAN' && task.status == 'Closed' "
+            (click)="changeStatus('New')"  class="btn btn-dark">
+              Reabrir
+            </button>
+            <button type="button" *ngIf="task.status != 'Closed' "
+            class="btn btn-link" (click)="viewTaskComentarios()">
+              Comentário(s)</button>
         </div>
         <br>
         <br>

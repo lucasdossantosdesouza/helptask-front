@@ -45,8 +45,9 @@ export class TaskDetailComponent implements OnInit {
       this.task.data = new Date(this.task.data).toISOString();   
       this.alertService.success(`Task ${this.getStatus()} com sucesso`,{ id: 'alert-1' });
       setTimeout(() => {
-        this.alertService.clear('alert-1');           
-      }, 4000);   
+        this.alertService.clear('alert-1');        
+        this.findByid(this.task.id);   
+      }, 2000);   
     }, error=>{     
       this.alertService.error(error['error']['errors'][0],{ id: 'alert-1' });     
     }     
